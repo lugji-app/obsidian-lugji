@@ -1,0 +1,125 @@
+/*
+ * Lugji plugin styles.
+ *
+ * All selectors are namespaced under `.lugji-*` so we never collide with
+ * Obsidian core or other community plugins. Colours use Obsidian CSS
+ * variables so the panel respects every theme + light/dark mode.
+ */
+
+.lugji-metadata-view {
+	padding: 12px 14px;
+	font-size: var(--font-ui-small);
+}
+
+.lugji-empty {
+	color: var(--text-muted);
+	font-style: italic;
+	padding: 24px 0;
+	text-align: center;
+}
+
+/* --- version banner ------------------------------------------------------- */
+
+.lugji-banner {
+	padding: 8px 12px;
+	margin-bottom: 12px;
+	border-radius: 6px;
+	border: 1px solid transparent;
+	line-height: 1.4;
+}
+
+.lugji-banner-warning {
+	background-color: var(--background-modifier-error-hover);
+	color: var(--text-error);
+	border-color: var(--background-modifier-error);
+}
+
+.lugji-banner-info {
+	background-color: var(--background-secondary);
+	color: var(--text-muted);
+	border-color: var(--background-modifier-border);
+}
+
+/* --- metadata summary rows ------------------------------------------------ */
+
+.lugji-metadata-summary {
+	margin-bottom: 14px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.lugji-meta-row {
+	margin: 4px 0;
+	color: var(--text-normal);
+}
+
+.lugji-meta-icon {
+	display: inline-block;
+	width: 1.4em;
+}
+
+/* --- linked-notes section ------------------------------------------------- */
+
+.lugji-links-section {
+	margin-top: 12px;
+}
+
+.lugji-links-heading {
+	font-size: var(--font-ui-medium);
+	margin: 0 0 8px 0;
+	color: var(--text-normal);
+}
+
+.lugji-link-row {
+	margin: 6px 0;
+	line-height: 1.5;
+}
+
+.lugji-link-label {
+	font-weight: 600;
+	color: var(--text-muted);
+}
+
+.lugji-link-row a.internal-link {
+	margin: 0 2px;
+}
+
+.lugji-upgrade-hook {
+	margin-top: 8px;
+	padding: 6px 8px;
+	font-size: var(--font-ui-smaller);
+	color: var(--text-muted);
+	font-style: italic;
+	background-color: var(--background-secondary);
+	border-radius: 4px;
+}
+
+/* --- lugji-meetings dashboard codeblock ----------------------------------- */
+
+.lugji-dashboard-table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: var(--font-ui-small);
+}
+
+.lugji-dashboard-table th,
+.lugji-dashboard-table td {
+	text-align: left;
+	padding: 4px 8px;
+	border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.lugji-dashboard-table th {
+	font-weight: 600;
+	color: var(--text-muted);
+}
+
+.lugji-dashboard-table tbody tr:hover {
+	background-color: var(--background-modifier-hover);
+}
+
+/* Rows whose `lugji_version` major differs from the plugin's native
+   schema get a subtle left accent — see ADR-O05. */
+.lugji-dashboard-row-mismatch td:first-child {
+	border-left: 3px solid var(--text-warning);
+}

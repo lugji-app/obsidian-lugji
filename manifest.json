@@ -1,0 +1,10 @@
+{
+	"id": "lugji",
+	"name": "Lugji",
+	"version": "1.0.0",
+	"minAppVersion": "1.4.0",
+	"description": "Enhance Lugji meeting notes in Obsidian with metadata view, smart linking, and dashboard codeblock. The Lugji iOS app's vault integration works without this plugin — install for power-user features. Mac, iPhone, iPad.",
+	"author": "Lugji",
+	"authorUrl": "https://lugji.app",
+	"isDesktopOnly": false
+}
