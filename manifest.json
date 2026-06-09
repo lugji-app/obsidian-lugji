@@ -1,0 +1,10 @@
+{
+	"id": "lugji",
+	"name": "Lugji",
+	"version": "1.0.1",
+	"minAppVersion": "1.7.2",
+	"description": "Enrich Lugji meeting notes with a metadata view, smart linking, and a dashboard codeblock. The Lugji iOS app's vault integration works without it — install for power-user features. Mac, iPhone, iPad.",
+	"author": "Lugji",
+	"authorUrl": "https://lugji.app",
+	"isDesktopOnly": false
+}
