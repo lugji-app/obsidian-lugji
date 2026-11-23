@@ -1,6 +1,6 @@
 {
 	"name": "lugji-obsidian",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"description": "Obsidian plugin for Lugji — Cantonese/Mandarin meeting AI. Reads meeting notes written by the Lugji iOS app and enriches them with metadata, smart linking, and dashboards.",
 	"main": "main.js",
 	"type": "module",

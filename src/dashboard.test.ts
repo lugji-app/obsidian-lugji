@@ -3,6 +3,7 @@ import type { LugjiMeeting } from "./frontmatter";
 import {
 	buildDashboardRows,
 	DEFAULT_DASHBOARD_CONFIG,
+	isDashboardMeetingPath,
 	parseDashboardConfig,
 	pickFirstH1,
 	type DashboardMeetingInput,
@@ -250,5 +251,26 @@ describe("pickFirstH1", () => {
 				{ level: 1, heading: "Not The Title" },
 			]),
 		).toBeNull();
+	});
+});
+
+describe("isDashboardMeetingPath", () => {
+	it("lists meetings inside the meetings folder", () => {
+		expect(isDashboardMeetingPath("Lugji Meetings/2026-11-18-週會.md", "Lugji Meetings")).toBe(true);
+		expect(isDashboardMeetingPath("Lugji Meetings/工作/2026-11-18-週會.md", "Lugji Meetings")).toBe(true);
+	});
+
+	it("never lists the iOS app's conflict copies", () => {
+		expect(isDashboardMeetingPath("Lugji Meetings/Lugji Conflicts/D43E0B40-20261118093000.md", "Lugji Meetings")).toBe(false);
+		expect(isDashboardMeetingPath("Lugji Meetings/Lugji Conflicts/D43E0B40-20261118093000-2.md", "Lugji Meetings")).toBe(false);
+	});
+
+	it("only that folder: a meeting whose name starts the same is listed", () => {
+		expect(isDashboardMeetingPath("Lugji Meetings/Lugji Conflicts 會議.md", "Lugji Meetings")).toBe(true);
+	});
+
+	it("nothing outside the meetings folder", () => {
+		expect(isDashboardMeetingPath("Other/x.md", "Lugji Meetings")).toBe(false);
+		expect(isDashboardMeetingPath("Lugji Conflicts/x.md", "Lugji Meetings")).toBe(false);
 	});
 });

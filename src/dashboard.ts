@@ -147,7 +147,7 @@ function collectMeetings(
 ): DashboardMeetingInput[] {
 	const inputs: DashboardMeetingInput[] = [];
 	for (const file of app.vault.getMarkdownFiles()) {
-		if (!isInsideFolder(file.path, folder)) continue;
+		if (!isDashboardMeetingPath(file.path, folder)) continue;
 		const cache = app.metadataCache.getFileCache(file);
 		const parsed = parseLugjiFrontmatter(cache?.frontmatter, file.path);
 		if (!parsed.ok) continue;
@@ -157,6 +157,23 @@ function collectMeetings(
 		});
 	}
 	return inputs;
+}
+
+/**
+ * The Lugji iOS app keeps a meeting's "conflict copy" (this device's version
+ * kept when another device changed the meeting) in this folder at the top of
+ * the meetings folder. A copy carries the meeting's frontmatter, so it would
+ * otherwise be listed as a second meeting.
+ */
+export const CONFLICT_COPIES_FOLDER = "Lugji Conflicts";
+
+/**
+ * A file the dashboard lists: inside `folder`, but not in its
+ * `Lugji Conflicts/` folder.
+ */
+export function isDashboardMeetingPath(path: string, folder: string): boolean {
+	if (!isInsideFolder(path, folder)) return false;
+	return !path.startsWith(folder + "/" + CONFLICT_COPIES_FOLDER + "/");
 }
 
 function isInsideFolder(path: string, folder: string): boolean {
